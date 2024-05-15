@@ -69,6 +69,9 @@ jobs:
         run: npm run lint
 
       - name: Build
+        env:
+          PUBLIC_DOMAIN_NAME: https://example.com
+          PUBLIC_TWITTER_USER: "@todo"
         run: |
           npm run build
           touch build/.nojekyll

@@ -14,17 +14,9 @@
  * limitations under the License.
  */
 
-// See https://kit.svelte.dev/docs/types#app
-// for information about these interfaces
-declare global {
-	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface Platform {}
-	}
-
-	declare const __DESCRIPTION__: string;
+export interface IMenuLinks {
+	name: string;
+	url: string;
+	exactMatch?: boolean;
+	external?: boolean;
 }
-
-export {};

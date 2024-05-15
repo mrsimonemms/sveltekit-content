@@ -16,12 +16,16 @@
 
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
+import pkg from './package.json';
 
 export default defineConfig({
 	plugins: [sveltekit()],
 	server: {
 		host: process.env.VITE_HOST,
 		port: Number(process.env.VITE_PORT ?? 5173),
+	},
+	define: {
+		__DESCRIPTION__: `"${pkg.description}"`,
 	},
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}'],
