@@ -16,12 +16,43 @@
 
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
+import fm from 'front-matter';
+import fs from 'fs';
+import { globSync as glob } from 'glob';
+import { mdsvex } from 'mdsvex';
+import mdsvexConfig from './mdsvex.config.js';
+
+const content = glob('./src/content/**/*.md');
+const entries = content
+	.filter((item) => {
+		// Don't include unpublished posts in final build
+		const data = fs.readFileSync(item, 'utf-8');
+		const { attributes } = fm(data);
+
+		return attributes.publish ?? true;
+	})
+	.map((item) =>
+		item
+			.replace(/^src\/content\//, '/')
+			.replace(/\.md$/, '')
+			.replace('index', ''),
+	);
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: vitePreprocess(),
+	preprocess: [vitePreprocess({}), mdsvex(mdsvexConfig)],
+
+	extensions: ['.svelte', ...mdsvexConfig.extensions],
+
+	prerender: {
+		crawl: true,
+	},
+
+	alias: {
+		$content: 'src/content',
+	},
 
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
@@ -29,7 +60,12 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter({
 			fallback: '404.html',
+			strict: true,
 		}),
+
+		prerender: {
+			entries,
+		},
 	},
 };
 

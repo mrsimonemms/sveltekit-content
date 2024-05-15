@@ -28,6 +28,7 @@ repos:
     rev: v1.1.1
     hooks:
       - id: markdown-toc
+        exclude: ^src/content
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.9.2
     hooks:
@@ -49,7 +50,3 @@ repos:
       - id: eslint
         files: \.([jt]sx?|svelte)$ # *.js, *.jsx *.ts, *.tsx and *.svelte
         types: [file]
-  - repo: https://github.com/mrsimonemms/toodaloo
-    rev: v0.2.2
-    hooks:
-      - id: scan

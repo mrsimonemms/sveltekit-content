@@ -11,5 +11,9 @@
       ],
       "settings": {}
     }
+  },
+  "containerEnv": {
+    "PUBLIC_DOMAIN_NAME": "http://localhost:5173",
+    "VITE_HOST": "0.0.0.0"
   }
 }
