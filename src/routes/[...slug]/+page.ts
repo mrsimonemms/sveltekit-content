@@ -19,5 +19,5 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params }) => ({
 	content: await fetch(params.slug),
-	s: await fetchBlogMetadata(),
+	blogMetadata: await fetchBlogMetadata(),
 });
