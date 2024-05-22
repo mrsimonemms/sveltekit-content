@@ -15,7 +15,7 @@
  */
 
 import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import fm from 'front-matter';
 import fs from 'fs';
 import { globSync as glob } from 'glob';
@@ -38,7 +38,7 @@ const entries = content
 			.replace('index', ''),
 	);
 
-/** @type {import('@sveltejs/kit').Config} */
+/** @type {import('@sveltejs/vite-plugin-svelte').Config} */
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors

@@ -1,7 +1,7 @@
 {
   "template": "https://github.com/mrsimonemms/new",
-  "commit": "b7aa3518c0746e387ef3b9d225968d01c7faced0",
-  "checkout": "main",
+  "commit": "fdb570bf5a2b5fb699b3cd3d595d6a3b734a7af3",
+  "checkout": null,
   "context": {
     "cookiecutter": {
       "project_name": "sveltekit-content",
