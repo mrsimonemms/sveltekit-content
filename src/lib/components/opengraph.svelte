@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import {
 		PUBLIC_DOMAIN_NAME as domainName,
@@ -30,7 +29,7 @@
 	{/if}
 
 	<!-- https://ogp.me -->
-	<meta property="og:image" content="{domainName}{base}{image}" />
+	<meta property="og:image" content="{domainName}{image}" />
 	<meta property="og:description" content={description} />
 	<meta property="og:title" content={title} />
 	<meta property="og:type" content={type} />
@@ -43,5 +42,5 @@
 	/>
 	<meta name="twitter:site" content="@{twitterUser}" />
 	<meta name="twitter:creator" content="@{twitterUser}" />
-	<meta name="twitter:image" content="{domainName}{base}{image}" />
+	<meta name="twitter:image" content="{domainName}{image}" />
 </svelte:head>

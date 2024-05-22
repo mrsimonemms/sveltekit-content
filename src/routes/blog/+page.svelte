@@ -56,7 +56,10 @@
 					class:is-half={key < 2}
 					class:is-one-quarter={key >= 2}
 				>
-					<Card href="/{post.slug}" img="/img/{post.slug}/{post.image}">
+					<Card
+						href="/{post.slug}"
+						img="/img/{post.slug}/{post.image ?? 'banner.jpg'}"
+					>
 						<h2 class="title">{post.title}</h2>
 						{#if post.subtitle}
 							<h3 class="subtitle">{post.subtitle}</h3>

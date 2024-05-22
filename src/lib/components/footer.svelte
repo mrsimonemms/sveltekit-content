@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { env } from '$env/dynamic/public';
+	import { PUBLIC_TWITTER_USER } from '$env/static/public';
 
 	const startYear = 2024;
 	const currentYear = new Date().getUTCFullYear();
@@ -21,7 +21,7 @@
 
 			<div class="column is-half has-text-right-desktop">
 				<a
-					href="https://twitter.com/{env.PUBLIC_TWITTER_USER}"
+					href="https://twitter.com/{PUBLIC_TWITTER_USER}"
 					target="_blank"
 					class="icon has-text-white"
 				>
