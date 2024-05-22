@@ -42,12 +42,16 @@ export async function fetchAll() {
 }
 
 export async function fetchBlogMetadata() {
-	const list = import.meta.glob<Content>('../content/blog/*.*', {
+	const list = import.meta.glob<{ metadata: Content }>('../content/blog/*', {
 		eager: true,
-		import: 'metadata',
 	});
 
-	return parseReadContent(list);
+	// import: 'metadata' isn't always reliable, so parse it long-hand
+	return parseReadContent(
+		Object.fromEntries(
+			Object.entries(list).map(([file, { metadata }]) => [file, metadata]),
+		),
+	);
 }
 
 export function parseReadContent<
